@@ -70,7 +70,7 @@ function getCoordsByAddress(address) {
       resolve(coords);
       return;
     }
-    reject(new Error("getCoordsByAddress Error: not Valid Address"))
+    reject(new Error("getCoordsByAddress Error: not Valid Address"));
    }
   );    
  });
@@ -108,6 +108,9 @@ function getContent(data) {
 }
 
 async function setMap(dataSet) { // 비동기방식
+  markerArray = [];
+  infowindowArray = [];
+
   for (var i = 0; i < dataSet.length; i ++) { 
   
     // 마커를 생성합니다
@@ -200,7 +203,7 @@ async function categoryHandler(event) {
   setMap(categorizedDataSet);
   } catch (error) {
     console.eroor(error);
-}
+  }
 }
 let markerArray = [];
 function closeMarker() {
@@ -215,7 +218,7 @@ async function setting() {
   setMap(dataSet);
 } catch (error) {
   console.error(error);
-}
+  }
 }
 
 setting();

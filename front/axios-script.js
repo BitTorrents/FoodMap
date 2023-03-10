@@ -214,7 +214,7 @@ async function setting() {
   const dataSet = await getDataSet();
   setMap(dataSet);
 } catch (error) {
-  console.eroor(error);
+  console.error(error);
 }
 }
 

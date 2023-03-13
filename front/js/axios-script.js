@@ -41,7 +41,7 @@ async function getDataSet(category) {
 
   const dataSet = await axios({
     method: "get", // http method
-    url: `http://www.jihong.store/restaurants?category=${qs}`,
+    url: `https://www.jihong.store/restaurants?category=${qs}`,
     headers: {}, // packet header
     data: {}, // packet body
   });

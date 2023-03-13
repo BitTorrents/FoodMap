@@ -7,7 +7,6 @@
 5. 요청이 성공하면, jwt를 localstorage에 저장하고 main page 이동
 */
 
-let url = "https://www.jihong.store";
 
 const btnSignIn = document.querySelector("#signin");
 

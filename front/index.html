@@ -11,7 +11,7 @@
       name="keywords"
       content="동네코딩, 맛집지도, 유튜버맛집, 맛집유튜버, 맛집탐험"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="common.css" />
     <link rel="stylesheet" href="map.css" />
   </head>
 
@@ -19,10 +19,29 @@
     <nav>
       <div class="inner">
         <div class="nav-container">
-          <h1 class="nav-title">맛집탐험</h1>
-          <button class="nav-contact">Contact</button>
+          <h1 class="nav-title"><a href="./index.html">맛집탐험</a></h1>
+
+          <div class="sign-container">
+            <!-- 비회원 -->
+            <div class="unsigned">
+              <a href="./signin.html">로그인/회원가입</a>
+            </div>
+
+            <!-- 회원 -->
+            <div class="signed hidden">
+              <div class="dropdown">
+                <div class="dropdown-button">
+                  안녕하세요. <span class="nickname"></span>님.
+                </div>
+                <div class="dropdown-content">
+                  <button id="sign-out">로그아웃</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </nav>
     </nav>
 
     <main>
@@ -61,8 +80,8 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="axios-script.js"></script>
-    <!-- <script src="./js/url.js"></script>
+    <script src="./js/url.js"></script>
     <script src="./js/map.js"></script> 
-    <script src="./js/header.js"></script> -->
+    <script src="./js/header.js"></script>
   </body>
 </html> 

@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: azure;
   }
   
   html {
@@ -32,6 +33,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: lightblue;
   }
   
   .nav-title {
@@ -52,7 +54,7 @@
   }
   
   .category-item {
-    width: 25%;
+    width: 24%;
     height: 5rem;
     background: none;
     border: none;

@@ -23,7 +23,7 @@
   }
   
   nav {
-    /* background-color: #e69a06; */
+    background-color: lightblue;
   }
   
   .nav-container {
@@ -32,7 +32,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: lightblue;
   }
   
   .nav-title {

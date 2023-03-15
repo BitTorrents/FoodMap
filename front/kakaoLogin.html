@@ -29,14 +29,29 @@
                                 console.log(kakao_account)
                             }
                         });
-                        window.location.href='https://www.jihong.store/kakaoLogin.html' //리다이렉트 되는 코드
+                        //window.location.href='https://www.jihong.store/kakaoLogin.html' //리다이렉트 되는 코드
                     },
                     fail: function(error) {
                         console.log(error);
                     }
                 });
             }
+            //카카오로그아웃  
+            function kakaoLogout() {
+                if (Kakao.Auth.getAccessToken()) {
+                Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function (response) {
+        	    console.log(response)
+        },
+                fail: function (error) {
+                console.log(error)
+        },
+      })
+            Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
         </script>
-   
-   <script src="./js/url.js"></script>
+        <script src="./js/url.js"></script>
 </body>

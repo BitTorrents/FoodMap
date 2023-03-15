@@ -62,3 +62,7 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .kakaoLogin-container {
+    text-align: center;
+  }

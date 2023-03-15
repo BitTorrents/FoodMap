@@ -104,6 +104,7 @@ exports.createUsers = async function (req, res) {
     const connection = await pool.getConnection(async (conn) => conn);
     try {
       // 아이디 중복 검사가 필요. 직접 구현해보기.
+      
 
       // 2. DB 입력
       const [rows] = await indexDao.insertUsers(

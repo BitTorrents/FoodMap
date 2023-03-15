@@ -30,6 +30,7 @@
           <h2>맛집탐험 회원가입</h2>
           <div class="signin-form">
             <input type="text" placeholder="아이디" id="userID" />
+            <input type="button" placeholder="중복확인" id="IDCheck" onclick="id_check">중복확인</input>
             <input type="password" placeholder="비밀번호" id="password" />
             <input type="text" placeholder="닉네임" id="nickname" />
             <input type="button" value="회원가입" id="signup" />
@@ -40,7 +41,8 @@
         <!-- signin-container -->
       </div>
     </main>
-
+    
+    
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
       integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="

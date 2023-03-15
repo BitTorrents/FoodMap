@@ -48,7 +48,8 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
     <script>
-        window.Kakao.init('fdfb328e55696ff8154c1fe84df2fb06');
+        window.Kakao.init('6c6800091943357802f219f0ddce7e52');
+        console.log(kakao.isInitialized()); // 초기화 판단여부
 
         function kakaoLogin() {
             window.Kakao.Auth.login({

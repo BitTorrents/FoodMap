@@ -13,7 +13,11 @@
   </head>
 
 <body>
+    <div class="signup-container">
+        <a href="#0" id="kakaoLogin"><img src="./images/kakao.png" alt="카카오계정 로그인" style="height: 70px;"/></a>
+    </div>
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
         <script>
             window.Kakao.init('6c6800091943357802f219f0ddce7e52');
     
@@ -36,21 +40,7 @@
                     }
                 });
             }
-            //카카오로그아웃  
-            function kakaoLogout() {
-                if (Kakao.Auth.getAccessToken()) {
-                Kakao.API.request({
-                url: '/v1/user/unlink',
-                success: function (response) {
-        	    console.log(response)
-        },
-                fail: function (error) {
-                console.log(error)
-        },
-      })
-            Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
+        
 </script>
         </script>
         <script src="./js/url.js"></script>

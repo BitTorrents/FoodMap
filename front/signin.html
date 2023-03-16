@@ -57,6 +57,7 @@
                     // scope: 'profile_nickname, profile_image, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                     success: function(authObj) {
                         console.log(authObj) // 로그인 성공하면 받아오는 데이터
+                        var access_token = Kakao.Auth.getAccessToken();
                         Kakao.Auth.setAccessToken(authObj.access_token);
 
                         getInfo();
@@ -91,7 +92,7 @@
                 return;
               }
               Kakao.Auth.logout(function() {
-                alert('logout token ->' + Kakao.Auth.getAccessToken());
+                alert('logout ->' + Kakao.Auth.getAccessToken());
               });
             }
         </script>

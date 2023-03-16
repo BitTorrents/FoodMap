@@ -10,6 +10,8 @@
     <meta name="keywords" content="맛집지도, 유튜버맛집, 맛집유튜버" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/sign.css" />
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
 
   <body>
@@ -45,31 +47,42 @@
         <!-- signin-container -->
       </div>
     </main>
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
     <script>
-        window.Kakao.init('6c6800091943357802f219f0ddce7e52');
-        console.log(kakao.isInitialized()); // 초기화 판단여부
+         Kakao.init('6c6800091943357802f219f0ddce7e52');
+            console.log(kakaoLogin.isInitialized()); // 초기화 판단여부
 
-        function kakaoLogin() {
-            window.Kakao.Auth.login({
-                scope: 'profile_nickname, profile_image, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
-                success: function(response) {
-                    console.log(response) // 로그인 성공하면 받아오는 데이터
-                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-                        url: '/v2/user/me',
-                        success: (res) => {
-                            const kakao_account = res.kakao_account;
-                            console.log(kakao_account)
-                        }
-                    });
-                    //window.location.href='https://www.jihong.store/signin.html' //리다이렉트 되는 코드
-                },
-                fail: function(error) {
-                    console.log(error);
-                }
-            });
-        }
+            function kakaoLogin() {
+               Kakao.Auth.login({
+                    // scope: 'profile_nickname, profile_image, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                    success: function(authObj) {
+                        console.log(authObj) // 로그인 성공하면 받아오는 데이터
+                        Kakao.Auth.setAccessToken(authObj.access_token);
+
+                        getInfo();
+                        },
+                    fail: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            function getInfo() {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function (res) {
+                        console.log(res);
+                        var profile_nickname = res.kakao_account.profile_nickname;
+                        var profile_image = res.kakao_account.profile_image;
+                        var account_email = res.kakao_account.email;
+
+                        console.log(profile_nickname,profile_image,account_email);
+                    },
+                    fail:function(error) {
+                        alert('카카오 로그인에 실패했습니다.' + JSON.stringify(error));
+                    }
+                });
+            }
         </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"

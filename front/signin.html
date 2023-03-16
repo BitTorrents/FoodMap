@@ -79,12 +79,7 @@
                         var nickname = res.kakao_account.profile_nickname;
                         var image = res.kakao_account.profile_image;
                         var email = res.kakao_account.email;
-
-                        var apiURL = (String)("http://" + window.location.hostname + ((location.port == "" || location.port == undefined) ? "" : ":" + location.port)
-			   		        + "/https://www.jihong.store/index.html?email="+email+"&nickname="+nickname+"&image="+image);
-			   			        window.open(apiURL);
-
-
+                        
                         console.log(nickname,image,email);
                     },
                     fail:function(error) {

@@ -90,10 +90,9 @@
 
             // 로그아웃 기능
             function kakaoLogout() {
-              Kakao.init('6c6800091943357802f219f0ddce7e52');
-              Kakao.isInitialized();
-
               if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
+                Kakao.init('6c6800091943357802f219f0ddce7e52');
+                Kakao.isInitialized();
                 alert('Not logged in');
                 return;
               }

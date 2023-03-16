@@ -79,7 +79,7 @@
                         var nickname = res.kakao_account.profile_nickname;
                         var image = res.kakao_account.profile_image;
                         var email = res.kakao_account.email;
-                        
+
                         console.log(nickname,image,email);
                     },
                     fail:function(error) {
@@ -90,6 +90,9 @@
 
             // 로그아웃 기능
             function kakaoLogout() {
+              Kakao.init('6c6800091943357802f219f0ddce7e52');
+              Kakao.isInitialized();
+
               if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
                 alert('Not logged in');
                 return;

@@ -9,7 +9,7 @@
     <meta name="description" content="맛집지도 서비스" />
     <meta name="keywords" content="맛집지도, 유튜버맛집, 맛집유튜버" />
 
-    <!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/sign.css" />
@@ -40,8 +40,8 @@
             <input type="button" value="로그인" id="signin" />
             <div class="signup-container">
               <a href="./signup.html" id="signup">회원가입</a>
-              <!-- <a href="javascript:kakaoLogin()" id="kakaoLogin"><img src="./images/kakao.png" alt="카카오계정 로그인" style="height: 80px;"/></a>
-              <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> -->
+              <a href="javascript:kakaoLogin()" id="kakaoLogin"><img src="./images/kakao.png" alt="카카오계정 로그인" style="height: 80px;"/></a>
+              <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
             </div>
             <!-- signup-container -->
           </div>
@@ -51,56 +51,58 @@
       </div>
     </main>
 
-    <!-- <script>
-         Kakao.init('6c6800091943357802f219f0ddce7e52');
-            console.log(Kakao.isInitialized()); // 초기화 판단여부
-
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        window.Kakao.init('6c6800091943357802f219f0ddce7e52');
+ 
             function kakaoLogin() {
-               Kakao.Auth.login({
-                    // scope: 'profile_nickname, profile_image, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+              window.Kakao.Auth.login({
+                    scope: 'profile_nickname, profile_image, account_email, gender', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                     success: function(authObj) {
                         console.log(authObj) // 로그인 성공하면 받아오는 데이터
-                        var access_token = Kakao.Auth.getAccessToken();
-                        Kakao.Auth.setAccessToken(authObj.access_token);
-
-                        getInfo();
-                        },
-                    fail: function(error) {
-                        console.log(error);
+                        window.Kakao.API.request({
+                            url:'/v2/user/me',
+                            success: res => {
+                                const kakao_account = res.kakao_account;
+                                console.log(kakao_account);
+                            }
+                        });
                     }
                 });
             }
+                        
+                    
+       
+            // <!-- function getInfo() {
+            //     Kakao.API.request({
+            //         url: '/v2/user/me',
+            //         success: function (res) {
+            //             console.log(res);
+            //             var nickname = res.kakao_account.profile_nickname;
+            //             var image = res.kakao_account.profile_image;
+            //             var email = res.kakao_account.email;
 
-            function getInfo() {
-                Kakao.API.request({
-                    url: '/v2/user/me',
-                    success: function (res) {
-                        console.log(res);
-                        var nickname = res.kakao_account.profile_nickname;
-                        var image = res.kakao_account.profile_image;
-                        var email = res.kakao_account.email;
+            //             console.log(nickname,image,email);
+            //         },
+            //         fail:function(error) {
+            //             alert('카카오 로그인에 실패했습니다.' + JSON.stringify(error));
+            //         }
+            //     });
+            // } -->
 
-                        console.log(nickname,image,email);
-                    },
-                    fail:function(error) {
-                        alert('카카오 로그인에 실패했습니다.' + JSON.stringify(error));
-                    }
-                });
-            }
-
-            // 로그아웃 기능
-            function kakaoLogout() {
-              if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
-                Kakao.init('6c6800091943357802f219f0ddce7e52');
-                Kakao.isInitialized();
-                alert('Not logged in');
-                return;
-              }
-              Kakao.Auth.logout(function() { // 로그아웃
-                alert('logout ->' + Kakao.Auth.getAccessToken());
+            // <!-- // 로그아웃 기능
+            // function kakaoLogout() {
+            //   if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
+            //     Kakao.init('6c6800091943357802f219f0ddce7e52');
+            //     Kakao.isInitialized();
+            //     alert('Not logged in');
+            //     return;
+            //   }
+            //   Kakao.Auth.logout(function() { // 로그아웃
+            //     alert('logout ->' + Kakao.Auth.getAccessToken());
                 
-              });
-            } -->
+            //   });
+            // } --> -->
         </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"

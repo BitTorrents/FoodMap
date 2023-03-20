@@ -8,9 +8,6 @@
     <meta name="author" content="author" />
     <meta name="description" content="맛집지도 서비스" />
     <meta name="keywords" content="맛집지도, 유튜버맛집, 맛집유튜버" />
-
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/sign.css" />
 
@@ -71,38 +68,24 @@
                 });
             }
                         
-                    
-       
-            // <!-- function getInfo() {
-            //     Kakao.API.request({
-            //         url: '/v2/user/me',
-            //         success: function (res) {
-            //             console.log(res);
-            //             var nickname = res.kakao_account.profile_nickname;
-            //             var image = res.kakao_account.profile_image;
-            //             var email = res.kakao_account.email;
 
-            //             console.log(nickname,image,email);
-            //         },
-            //         fail:function(error) {
-            //             alert('카카오 로그인에 실패했습니다.' + JSON.stringify(error));
-            //         }
-            //     });
-            // } -->
-
-            // <!-- // 로그아웃 기능
-            // function kakaoLogout() {
-            //   if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
-            //     Kakao.init('6c6800091943357802f219f0ddce7e52');
-            //     Kakao.isInitialized();
-            //     alert('Not logged in');
-            //     return;
-            //   }
-            //   Kakao.Auth.logout(function() { // 로그아웃
-            //     alert('logout ->' + Kakao.Auth.getAccessToken());
+             // 로그아웃 기능
+            function kakaoLogout() {
+              if (!Kakao.Auth.getAccessToken()) { // 토큰 여부 확인
+                Kakao.API.request({
+                  url:'/v2/user/unlink',
+                  success: function (authObj) {
+                    console.log(authObj)
+                  },
+                  fail: function (error) {
+                    console.log(error)
+                  },
+                })
+                Kakao.Auth.setAccessToken(undefined)
+                alert('로그아웃');
                 
-            //   });
-            // } --> -->
+              }
+            }
         </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
